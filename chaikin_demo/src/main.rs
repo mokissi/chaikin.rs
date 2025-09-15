@@ -33,3 +33,10 @@ fn chaikin(points: &[Point]) -> Vec<Point> {
     out.push(points[points.len() - 1]); 
     out
 }
+fn points_at_step(points: &[Point], k: usize) -> Vec<Point> {
+    let mut pts = points.to_vec();
+    for _ in 0..k {
+        pts = chaikin(&pts);
+    }
+    pts
+}
