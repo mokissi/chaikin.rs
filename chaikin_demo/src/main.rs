@@ -7,7 +7,7 @@ struct Point {
 }
 
 fn chaikin(points: &[Point]) -> Vec<Point> {
-    if points.len() <= 2 {
+    if points.len() <= 2  {
         return points.to_vec(); 
     }
     
@@ -54,6 +54,7 @@ async fn main() {
         // --- mouse input ---
         if is_mouse_button_pressed(MouseButton::Left) {
             let (mx, my) = mouse_position();
+            
             control_points.push(Point { x: mx, y: my });
         }
 
@@ -88,7 +89,7 @@ async fn main() {
 
 
         // --- draw curve/line ---
-        if !control_points.is_empty() && playing {
+        if !control_points.is_empty() && playing  {
             let curve_points = match control_points.len() {
                 1 | 2 => control_points.clone(),
                 _ => points_at_step(&control_points, current_step),
