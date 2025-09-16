@@ -10,7 +10,7 @@ fn chaikin(points: &[Point]) -> Vec<Point> {
     if points.len() <= 2 {
         return points.to_vec(); 
     }
-
+    
     let mut out = vec![points[0]]; 
 
     for i in 0..points.len() - 1 {
@@ -31,7 +31,7 @@ fn chaikin(points: &[Point]) -> Vec<Point> {
     }
 
     out.push(points[points.len() - 1]); 
-    out
+   return out;
 }
 fn points_at_step(points: &[Point], k: usize) -> Vec<Point> {
     let mut pts = points.to_vec();
@@ -81,12 +81,14 @@ async fn main() {
         }
 
         // --- draw control points ---
+
         for p in &control_points {
             draw_circle(p.x, p.y, 5.0, RED);
         }
 
+
         // --- draw curve/line ---
-        if !control_points.is_empty() {
+        if !control_points.is_empty() && playing {
             let curve_points = match control_points.len() {
                 1 | 2 => control_points.clone(),
                 _ => points_at_step(&control_points, current_step),
